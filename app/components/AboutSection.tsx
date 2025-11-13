@@ -11,7 +11,7 @@ const cormorant = Cormorant_Garamond({
 
 export default function AboutSection() {
   return (
-    <section className="w-full bg-[#f6f4e9] text-[#1e3c35] py-20 px-4 md:px-10 lg:px-20">
+    <section className="w-full  bg-[#f6f4e9] text-[#1e3c35] py-20 px-4 md:px-10 lg:px-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-20">
         <div className="flex flex-col justify-between col-span-1">
           <div className="mb-10">
