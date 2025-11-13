@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #fff;
+  color: #0f172a; /* default text color */
+  /* If you used next/font (Inter above), its class sets the font automatically.
+     This rule is a fallback when using the CSS-only approach below. */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  line-height: 1.6;
+}
+
+/* Hide scrollbar but keep horizontal scrolling (works across browsers) */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  -webkit-overflow-scrolling: touch; /* smooth on iOS */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* loop */
+
+/* Marquee keyframes + utility (works without tailwind.config.js) */
+:root {
+  --marquee-duration: 15s; /* change speed here */
+}
+
+/* prefer-reduced-motion respect */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none !important;
+  }
+}
+
+/* wrapper to hide overflow */
+.marquee-wrap {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* the moving strip */
+.animate-marquee {
+  display: inline-flex; /* inline so it doesn't force new line */
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee var(--marquee-duration) linear infinite;
+}
+
+/* create a utility class if you still want tailwind-like naming */
+.animate-marquee--fast {
+  --marquee-duration: 10s;
+}
+.animate-marquee--slow {
+  --marquee-duration: 25s;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  } /* -50% when you've duplicated contents */
+}
+
+
+
+
+/* globals.css (or your main stylesheet) */
+@keyframes marquee-rtl {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* adjust duration (20s) to speed up / slow down */
+.animate-marquee-rtl {
+  animation: marquee-rtl 20s linear infinite;
+  will-change: transform;
+}
